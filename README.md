@@ -1,4 +1,4 @@
-# Class-track Project
+# Class-track Project DEPI
 
 Full-stack application for managing classes: students, sessions, attendance (including QR scanning), grades, finance, messaging, reports, and admin workflows. This repository is a **monorepo** with a Node.js API and a Next.js web app.
 
