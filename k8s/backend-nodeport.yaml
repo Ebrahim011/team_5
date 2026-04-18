@@ -1,0 +1,15 @@
+# Optional: reach API from your machine without Ingress (e.g. http://localhost:30081/api/health)
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-nodeport
+  namespace: depi
+spec:
+  type: NodePort
+  selector:
+    app: backend
+  ports:
+    - port: 5000
+      targetPort: 5000
+      nodePort: 30081
+      name: http

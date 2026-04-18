@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: depi
+data:
+  # Browser origin(s) allowed by CORS — set to your Ingress URL or NodePort frontend URL
+  CORS_ORIGINS: "http://depi.local,http://localhost:30080,http://127.0.0.1:30080,http://localhost:30081"

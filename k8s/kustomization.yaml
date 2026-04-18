@@ -1,0 +1,14 @@
+# 1) kubectl apply -f k8s/namespace.yaml
+# 2) kubectl apply -f k8s/backend-secret.example.yaml
+# 3) kubectl apply -k k8s/
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: depi
+resources:
+  - namespace.yaml
+  - mongodb.yaml
+  - backend-configmap.yaml
+  - backend.yaml
+  - frontend.yaml
+  - backend-nodeport.yaml
+  - ingress.yaml

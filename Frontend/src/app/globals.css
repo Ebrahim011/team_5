@@ -1,0 +1,271 @@
+/* Loaded at runtime in the browser — avoids build-time fetch to Google (Docker/offline builds) */
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&subset=arabic,latin&display=swap");
+
+@import "tailwindcss";
+
+/* Custom breakpoint for extra small screens (340px+) */
+@media (min-width: 375px) {
+  .xs\:pt-6 { padding-top: 1.5rem; }
+  .xs\:pb-6 { padding-bottom: 1.5rem; }
+  .xs\:mb-6 { margin-bottom: 1.5rem; }
+  .xs\:mb-4 { margin-bottom: 1rem; }
+  .xs\:mb-3 { margin-bottom: 0.75rem; }
+  .xs\:px-4 { padding-left: 1rem; padding-right: 1rem; }
+  .xs\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .xs\:p-4 { padding: 1rem; }
+  .xs\:p-6 { padding: 1.5rem; }
+  .xs\:w-10 { width: 2.5rem; }
+  .xs\:w-56 { width: 14rem; }
+  .xs\:h-12 { height: 3rem; }
+  .xs\:h-7 { height: 1.75rem; }
+  .xs\:h-36 { height: 9rem; }
+  .xs\:w-7 { width: 1.75rem; }
+  .xs\:text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+  .xs\:text-base { font-size: 1rem; line-height: 1.5rem; }
+  .xs\:text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+  .xs\:text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+  .xs\:rounded-2xl { border-radius: 1rem; }
+  .xs\:gap-2 { gap: 0.5rem; }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #1f2937;
+  /* Main Color: #6339AC */
+  --primary: #6339AC;
+  --primary-hover: #502d8c;
+  --primary-light: #F0EBF8;
+  --font-cairo: "Cairo", ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Map purple colors to our new brand color to automatically update all components */
+  --color-purple-50: var(--primary-light);
+  --color-purple-100: #E6DDF5;
+  --color-purple-400: #8260BF;
+  --color-purple-500: #734CB6;
+  --color-purple-600: var(--primary);
+  --color-purple-700: var(--primary-hover);
+
+  /* Global sans font is Cairo */
+  --font-sans: var(--font-cairo), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* Force Cairo as the main font everywhere */
+  font-family: var(--font-cairo), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Arabic font support */
+html[dir="rtl"],
+[dir="rtl"] {
+  font-family: var(--font-cairo), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4b5fd;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a78bfa;
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Input autofill styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+  box-shadow: 0 0 0 1000px white inset;
+  -webkit-text-fill-color: #1f2937;
+}
+
+/* Smooth transitions */
+input,
+button,
+a {
+  transition: all 0.2s ease-in-out;
+}
+
+@keyframes slide-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-slide-in-up {
+  animation: slide-in-up 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* Dashboard Banner Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-25px, 25px) scale(1.15);
+  }
+  66% {
+    transform: translate(20px, -20px) scale(0.85);
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-20px) translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-float {
+  animation: float 40s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 45s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 20s ease infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.2s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1.5s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 8s linear infinite;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 1000px 100%;
+}
